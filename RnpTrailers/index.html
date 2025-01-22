@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="RNP Trailer Rentals - Your trusted source for utility, enclosed, car, and boat trailer rentals">
+    <meta name="keywords" content="trailer rental, utility trailer, enclosed trailer, car trailer, boat trailer">
+    <title>RNP Trailer Rentals | Professional Trailer Rental Services</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+</head>
+<body>
+    <header>
+        <nav class="main-nav">
+            <div class="logo">
+                <img src="https://via.placeholder.com/200x50/2c3e50/ffffff?text=RNP+Trailer+Rentals" alt="RNP Trailer Rentals Logo">
+                <h1>RNP Trailer Rentals</h1>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#available-trailers" class="nav-link">Available Trailers</a></li>
+                <li><a href="#add-trailer" class="nav-link">Add Trailer</a></li>
+                <li><a href="#rental-history" class="nav-link">Rental History</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container">
+        <section id="available-trailers" class="section">
+            <h2>Available Trailers</h2>
+            <div class="search-filter">
+                <input type="search" id="trailer-search" placeholder="Search trailers...">
+                <select id="filter-type">
+                    <option value="">All Types</option>
+                    <option value="utility">Utility</option>
+                    <option value="enclosed">Enclosed</option>
+                    <option value="car">Car Trailer</option>
+                    <option value="boat">Boat Trailer</option>
+                </select>
+                <select id="sort-by">
+                    <option value="price-asc">Price: Low to High</option>
+                    <option value="price-desc">Price: High to Low</option>
+                    <option value="name">Name</option>
+                </select>
+            </div>
+            <div class="trailer-grid" id="trailers"></div>
+        </section>
+
+        <section id="add-trailer" class="section">
+            <h2>Add a Trailer</h2>
+            <form id="trailer-form" class="form">
+                <div class="form-group">
+                    <label for="trailer-name">Trailer Name:</label>
+                    <input type="text" id="trailer-name" name="trailer-name" required 
+                           placeholder="Enter trailer name">
+                </div>
+                
+                <div class="form-group">
+                    <label for="trailer-type">Trailer Type:</label>
+                    <select id="trailer-type" name="trailer-type" required>
+                        <option value="">Select a type</option>
+                        <option value="utility">Utility</option>
+                        <option value="enclosed">Enclosed</option>
+                        <option value="car">Car Trailer</option>
+                        <option value="boat">Boat Trailer</option>
+                    </select>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="rental-price">Daily Rental Price ($):</label>
+                        <input type="number" id="rental-price" name="rental-price" 
+                               min="0" step="0.01" required placeholder="0.00">
+                    </div>
+                    <div class="form-group">
+                        <label for="trailer-status">Status:</label>
+                        <select id="trailer-status" name="trailer-status" required>
+                            <option value="available">Available</option>
+                            <option value="rented">Rented</option>
+                            <option value="maintenance">Maintenance</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="trailer-description">Description:</label>
+                    <textarea id="trailer-description" name="trailer-description" 
+                              rows="4" required placeholder="Enter trailer description"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="trailer-specs">Specifications:</label>
+                    <div class="specs-grid">
+                        <input type="text" id="length" name="length" placeholder="Length (ft)">
+                        <input type="text" id="width" name="width" placeholder="Width (ft)">
+                        <input type="text" id="capacity" name="capacity" placeholder="Weight Capacity (lbs)">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="trailer-image">Trailer Images:</label>
+                    <input type="file" id="trailer-image" name="trailer-image" 
+                           accept="image/*" multiple>
+                    <small class="help-text">Upload up to 5 images (Max 5MB each)</small>
+                </div>
+
+                <div class="form-actions">
+                    <button type="reset" class="btn btn-secondary">Reset</button>
+                    <button type="submit" class="btn btn-primary">Add Trailer</button>
+                </div>
+            </form>
+        </section>
+
+        <section id="customer-management" class="section">
+            <h2>Customer Management</h2>
+            
+            <div class="scan-section">
+                <button id="scan-id" class="btn btn-primary">
+                    <i class="fas fa-camera"></i> Scan ID/License
+                </button>
+                <button id="scan-docs" class="btn btn-primary">
+                    <i class="fas fa-file-scan"></i> Scan Documents
+                </button>
+            </div>
+
+            <form id="customer-form" class="form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="customer-name">Full Name:</label>
+                        <input type="text" id="customer-name" name="customer-name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="license-number">Driver's License #:</label>
+                        <input type="text" id="license-number" name="license-number" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="customer-phone">Phone:</label>
+                        <input type="tel" id="customer-phone" name="customer-phone" 
+                               pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" 
+                               placeholder="123-456-7890" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="customer-email">Email:</label>
+                        <input type="email" id="customer-email" name="customer-email" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="customer-address">Address:</label>
+                    <textarea id="customer-address" name="customer-address" rows="2" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="id-scan">ID/License Scan:</label>
+                    <div class="scan-preview" id="id-scan-preview">
+                        <img id="id-scan-image" src="images/scan-placeholder.jpg" alt="ID Scan Preview">
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">Save Customer</button>
+                </div>
+            </form>
+
+            <div class="customer-table-section">
+                <h3>Customer Records</h3>
+                <div class="table-controls">
+                    <input type="search" id="customer-search" placeholder="Search customers...">
+                    <button id="export-data" class="btn btn-secondary">Export Data</button>
+                </div>
+                <div class="table-container">
+                    <table id="customer-table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>License #</th>
+                                <th>Phone</th>
+                                <th>Email</th>
+                                <th>Rentals</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="customer-records">
+                            <!-- Customer records will be inserted here -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <section id="rental-agreement" class="section">
+            <h2>Create Rental Agreement</h2>
+            <form id="rental-form" class="form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="rental-trailer">Select Trailer:</label>
+                        <select id="rental-trailer" name="rental-trailer" required>
+                            <option value="">Choose a trailer</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="rental-customer">Select Customer:</label>
+                        <select id="rental-customer" name="rental-customer" required>
+                            <option value="">Choose a customer</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="rental-start">Start Date:</label>
+                        <input type="date" id="rental-start" name="rental-start" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="rental-end">End Date:</label>
+                        <input type="date" id="rental-end" name="rental-end" required>
+                    </div>
+                </div>
+
+                <div class="rental-summary">
+                    <h3>Rental Summary</h3>
+                    <div class="summary-details">
+                        <p>Duration: <span id="rental-duration">0 days</span></p>
+                        <p>Daily Rate: $<span id="rental-rate">0.00</span></p>
+                        <p>Total Cost: $<span id="rental-total">0.00</span></p>
+                        <p>Required Deposit: $<span id="rental-deposit">0.00</span></p>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="rental-notes">Notes:</label>
+                    <textarea id="rental-notes" name="rental-notes" rows="3"></textarea>
+                </div>
+
+                <div class="signature-section">
+                    <h3>Signature</h3>
+                    <canvas id="signature-pad" width="400" height="200"></canvas>
+                    <div class="signature-actions">
+                        <button type="button" class="btn btn-secondary" onclick="signaturePad.clear()">Clear</button>
+                    </div>
+                </div>
+
+                <div class="payment-section">
+                    <h3>Payment Details</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="payment-method">Payment Method:</label>
+                            <select id="payment-method" name="payment-method" required>
+                                <option value="">Select payment method</option>
+                                <option value="credit">Credit Card</option>
+                                <option value="debit">Debit Card</option>
+                                <option value="cash">Cash</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="payment-status">Payment Status:</label>
+                            <select id="payment-status" name="payment-status" required>
+                                <option value="Pending">Pending</option>
+                                <option value="Partial">Partial Payment</option>
+                                <option value="Completed">Completed</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>
+                            <input type="checkbox" id="deposit-paid" name="deposit-paid">
+                            Deposit Paid
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">Create Agreement</button>
+                </div>
+            </form>
+        </section>
+
+        <section id="rental-history" class="section">
+            <h2>Rental History</h2>
+            <div class="history-filters">
+                <input type="date" id="date-from">
+                <input type="date" id="date-to">
+                <button class="btn btn-secondary" id="filter-history">Filter</button>
+            </div>
+            <div id="rental-records" class="history-grid"></div>
+        </section>
+
+        <section id="reports" class="section">
+            <h2>Reports & Analytics</h2>
+            
+            <div class="report-controls">
+                <div class="date-range">
+                    <input type="month" id="report-month" value="">
+                    <button class="btn btn-primary" id="generate-report">Generate Report</button>
+                    <button class="btn btn-secondary" id="export-report">Export to CSV</button>
+                </div>
+                
+                <div class="report-filters">
+                    <select id="report-type">
+                        <option value="revenue">Revenue Analysis</option>
+                        <option value="utilization">Trailer Utilization</option>
+                        <option value="overdue">Overdue Rentals</option>
+                        <option value="customer">Customer Analytics</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="report-dashboard">
+                <div class="metric-cards">
+                    <div class="metric-card">
+                        <h3>Monthly Revenue</h3>
+                        <div class="metric-value">$<span id="total-revenue">0.00</span></div>
+                        <div class="metric-trend">
+                            <span id="revenue-trend">0%</span> vs last month
+                        </div>
+                    </div>
+                    
+                    <div class="metric-card">
+                        <h3>Active Rentals</h3>
+                        <div class="metric-value"><span id="active-rentals">0</span></div>
+                        <div class="metric-trend">
+                            <span id="rental-trend">0%</span> utilization rate
+                        </div>
+                    </div>
+                    
+                    <div class="metric-card">
+                        <h3>Overdue Rentals</h3>
+                        <div class="metric-value"><span id="overdue-count">0</span></div>
+                        <div class="metric-trend warning">
+                            <span id="overdue-amount">$0.00</span> outstanding
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chart-container">
+                    <canvas id="revenue-chart"></canvas>
+                </div>
+
+                <div class="report-tables">
+                    <div class="utilization-table">
+                        <h3>Trailer Utilization</h3>
+                        <table id="utilization-stats">
+                            <thead>
+                                <tr>
+                                    <th>Trailer Type</th>
+                                    <th>Total Units</th>
+                                    <th>Active Rentals</th>
+                                    <th>Utilization Rate</th>
+                                    <th>Revenue</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+
+                    <div class="overdue-table">
+                        <h3>Overdue Rentals</h3>
+                        <table id="overdue-rentals">
+                            <thead>
+                                <tr>
+                                    <th>Customer</th>
+                                    <th>Trailer</th>
+                                    <th>Due Date</th>
+                                    <th>Days Overdue</th>
+                                    <th>Amount Due</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="section">
+            <h2>Contact Us</h2>
+            <div class="contact-info">
+                <div class="contact-details">
+                    <p><strong>Address:</strong> 123 Trailer Lane, City, State ZIP</p>
+                    <p><strong>Phone:</strong> (555) 123-4567</p>
+                    <p><strong>Email:</strong> info@rnptrailers.com</p>
+                    <p><strong>Hours:</strong> Mon-Sat: 8AM-6PM, Sun: Closed</p>
+                </div>
+                <div class="contact-form">
+                    <form id="contact-form">
+                        <input type="email" placeholder="Your Email" required>
+                        <textarea placeholder="Your Message" required></textarea>
+                        <button type="submit" class="btn btn-primary">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#available-trailers">Available Trailers</a></li>
+                    <li><a href="#rental-terms">Rental Terms</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Connect With Us</h3>
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook">Facebook</a>
+                    <a href="#" aria-label="Twitter">Twitter</a>
+                    <a href="#" aria-label="Instagram">Instagram</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 RNP Trailer Rentals. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="test.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/quagga@0.12.1/dist/quagga.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/signature_pad@4.0.0/dist/signature_pad.umd.min.js"></script>
+</body>
+</html> 

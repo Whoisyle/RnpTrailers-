@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RNP Trailer Rentals</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <h1>RNP Trailer Rentals</h1>
+            <ul>
+                <li><a href="#available-trailers">Available Trailers</a></li>
+                <li><a href="#add-trailer">Add Trailer</a></li>
+                <li><a href="#rental-history">Rental History</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="available-trailers">
+            <h2>Available Trailers</h2>
+            <div class="trailer-grid" id="trailers"></div>
+        </section>
+
+        <section id="add-trailer">
+            <h2>Add a Trailer</h2>
+            <form id="trailer-form">
+                <div class="form-group">
+                    <label for="trailer-name">Trailer Name:</label>
+                    <input type="text" id="trailer-name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="trailer-type">Trailer Type:</label>
+                    <select id="trailer-type" required>
+                        <option value="">Select a type</option>
+                        <option value="utility">Utility</option>
+                        <option value="enclosed">Enclosed</option>
+                        <option value="car">Car Trailer</option>
+                        <option value="boat">Boat Trailer</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="rental-price">Daily Rental Price ($):</label>
+                    <input type="number" id="rental-price" min="0" step="0.01" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="trailer-description">Description:</label>
+                    <textarea id="trailer-description" rows="4" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="trailer-image">Trailer Image:</label>
+                    <input type="file" id="trailer-image" accept="image/*">
+                </div>
+
+                <button type="submit" class="btn-primary">Add Trailer</button>
+            </form>
+        </section>
+
+        <section id="rental-history">
+            <h2>Rental History</h2>
+            <div id="rental-records"></div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 RNP Trailer Rentals. All rights reserved.</p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
