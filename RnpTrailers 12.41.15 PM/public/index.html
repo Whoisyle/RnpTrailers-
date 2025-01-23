@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="RNP Trailer Rentals - Your trusted source for trailer rentals">
+    <title>RNP Trailer Rental</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <script src="/js/main.js" type="module" defer></script>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">RNP Trailer Rental</div>
+            <ul class="nav-links">
+                <li><a href="#trailers">Trailers</a></li>
+                <li><a href="#rentals">Rentals</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="trailers" class="section">
+            <h2>Available Trailers</h2>
+            <div class="trailer-grid" id="trailer-container"></div>
+        </section>
+
+        <section id="rentals" class="section">
+            <h2>Rental Information</h2>
+            <form id="rental-form" class="form">
+                <div class="form-group">
+                    <label for="rental-start">Start Date</label>
+                    <input type="date" id="rental-start" required>
+                </div>
+                <div class="form-group">
+                    <label for="rental-end">End Date</label>
+                    <input type="date" id="rental-end" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Request Rental</button>
+            </form>
+        </section>
+
+        <section id="contact" class="section">
+            <h2>Contact Us</h2>
+            <form id="contact-form" class="form">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Send Message</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 RNP Trailer Rental. All rights reserved.</p>
+    </footer>
+</body>
+</html> 
