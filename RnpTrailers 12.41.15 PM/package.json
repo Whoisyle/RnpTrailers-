@@ -1,4 +1,4 @@
- "/Users/paballokali/Desktop/rnptrailers 2.0"
+{
   "name": "rnp-trailer-rental",
   "version": "1.0.0",
   "description": "RNP Trailer Rental Management System",
@@ -24,8 +24,8 @@
     "nodemon": "^3.0.2"
   },
   "engines": {
-    "node": ">=18.0.0",
-    "npm": ">=9.0.0"
+    "node": "18.x",
+    "npm": "9.x"
   },
   "license": "MIT"
-} 
+}  
